@@ -1,0 +1,6 @@
+/* Example media query that might cause resizing */
+@media (max-width: 600px) {
+    body {
+        font-size: 12px; /* This could make the page appear smaller */
+    }
+}
