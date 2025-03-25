@@ -110,21 +110,20 @@ const ContactUs = () => {
                 sx={{
                   p: 3,
                   borderRadius: "12px",
-                  backgroundImage: `url(${officeimg})`, // Add background image here
-                  backgroundSize: "cover",
+                  backgroundImage: `url(${officeimg})`, 
                   backgroundPosition: "center",
                   height: "300px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  color: "black", // White text for contrast
+                  color: "black", 
                 }}
               >
                 <Typography
                   variant="h5"
                   gutterBottom
                   fontWeight="bold"
-                  color="inherit" // Use inherited color (white)
+                  color="inherit" 
                 >
                   Our Office
                 </Typography>

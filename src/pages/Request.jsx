@@ -1,4 +1,11 @@
-import { Box, Button, Container, Paper, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +32,9 @@ const Request = () => {
   useEffect(() => {
     const checkExistingRequest = async () => {
       try {
-        const existingRequest = await requestservice.getRequestByEmail(userEmail);
+        const existingRequest = await requestservice.getRequestByEmail(
+          userEmail
+        );
         if (existingRequest) {
           setHasRequested(true);
         }
@@ -71,13 +80,22 @@ const Request = () => {
           textAlign: "center",
         }}
       >
-        <Typography variant="h5" component="h1" sx={{ fontFamily: "sans-serif", p: 5 }}>
+        <Typography
+          variant="h5"
+          component="h1"
+          sx={{ fontFamily: "sans-serif", p: 5 }}
+        >
           Request to Write Blog
         </Typography>
 
         {!userEmail ? (
-          <Typography color="error" fontFamily="Trirong" fontSize="20px" sx={{ my: 2 }}>
-            You need to <Link to="/login" >login</Link> to create a request.
+          <Typography
+            color="error"
+            fontFamily="Trirong"
+            fontSize="20px"
+            sx={{ my: 2 }}
+          >
+            You need to <Link to="/login">login</Link> to create a request.
           </Typography>
         ) : hasRequested ? (
           <Typography color="error" sx={{ mt: 2 }}>
@@ -96,10 +114,15 @@ const Request = () => {
                 disabled
                 {...register("name", {
                   required: "Name is required",
-                  minLength: { value: 2, message: "Name must be at least 2 characters" },
+                  minLength: {
+                    value: 2,
+                    message: "Name must be at least 2 characters",
+                  },
                 })}
               />
-              {errors.name && <Typography color="error">{errors.name.message}</Typography>}
+              {errors.name && (
+                <Typography color="error">{errors.name.message}</Typography>
+              )}
 
               <InputComp
                 label="Email"
@@ -114,12 +137,25 @@ const Request = () => {
                 type="text"
                 {...register("experience", {
                   required: "Experience is required",
-                  minLength: { value: 2, message: "Experience must be at least 2 characters" },
+                  minLength: {
+                    value: 2,
+                    message: "Experience must be at least 2 characters",
+                  },
                 })}
               />
-              {errors.experience && <Typography color="error">{errors.experience.message}</Typography>}
+              {errors.experience && (
+                <Typography color="error">
+                  {errors.experience.message}
+                </Typography>
+              )}
 
-              <Button type="submit" variant="contained" color="primary" sx={{ mt: 2 }} disabled={hasRequested}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                sx={{ mt: 2 }}
+                disabled={hasRequested}
+              >
                 {hasRequested ? "Request Already Sent" : "Submit"}
               </Button>
             </Stack>

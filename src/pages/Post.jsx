@@ -18,7 +18,7 @@ import RecentPosts from "../components/RecentPosts";
 
 const Post = () => {
   const [post, setPost] = useState(null);
-  const [author, setAuthor] = useState(null); // New state for author details
+  const [author, setAuthor] = useState(null);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const { slug } = useParams();
@@ -50,13 +50,13 @@ const Post = () => {
 
             // Fetch author details using post.userId
             service
-              .getUserById(postData.userId) // New service method (to be defined)
+              .getUserById(postData.userId)
               .then((authorData) => {
-                setAuthor(authorData || { name: "Anonymous" }); // Fallback to "Anonymous"
+                setAuthor(authorData || { name: "Anonymous" });
               })
               .catch((error) => {
                 console.error("Error fetching author:", error);
-                setAuthor({ name: "Anonymous" }); // Fallback on error
+                setAuthor({ name: "Anonymous" });
               });
           } else {
             console.log(`Post with slug ${slug} not found`);
@@ -81,7 +81,7 @@ const Post = () => {
     } else {
       navigate("/");
     }
-  }, [slug, navigate,isLoggedIn,isAuthor]);
+  }, [slug, navigate, isLoggedIn, isAuthor]);
 
   // Refetch post and comments when user logs in
   useEffect(() => {
@@ -89,7 +89,7 @@ const Post = () => {
       service.getPost(slug).then(setPost);
       commentservice.getComments(slug).then(setComments);
     }
-  }, [isLoggedIn, slug,isAuthor]);
+  }, [isLoggedIn, slug, isAuthor]);
 
   console.log("posts in post", post?.userId);
 
@@ -261,7 +261,9 @@ const Post = () => {
 
         {/* Recent Posts */}
         <Box>
-          <Typography sx={{ textAlign: "center", fontFamily: "Times New Roman" }}>
+          <Typography
+            sx={{ textAlign: "center", fontFamily: "Times New Roman" }}
+          >
             Recent Posts
           </Typography>
           <Divider sx={{ mt: 1 }} />
