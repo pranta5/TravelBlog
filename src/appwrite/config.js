@@ -123,6 +123,7 @@ export class Service {
       throw new Error("Error deleting file: " + error.message);
     }
   }
+
   getfilePreview(fileId) {
     if (!fileId) {
       console.error("Missing fileId in getfilePreview function");
@@ -161,23 +162,6 @@ export class Service {
       return null; // Return null on error
     }
   }
-
-  // async getAllImages(){
-  //   try {
-  //     const response =await this.storage.listFiles(configEnv.appwriteBucketId)
-  //     const images = response.files.map((file)=>(
-  //       {
-  //         id:file.$id,
-  //         name:file.name,
-  //         preview:this.getfilePreview(file.$id)
-  //       }
-  //     ))
-  //     return images
-  //   }catch(error){
-  //     console.error("Error in fetching images", error)
-  //     return []
-  //   }
-  // }
 
   async getAllImages(page = 1, limit = 6) {
     try {

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -46,6 +45,12 @@ const Gallery = () => {
 
   return (
     <Container sx={{ py: 4 }}>
+      <Typography variant="h6" color="warning" mb={2}>
+        * It's possible that images are not displaying due to changes in
+        Appwrite's policies regarding free user access for Image transformations
+        (starting April 1st, 2025).
+      </Typography>
+
       <Typography variant="h4" textAlign="center" gutterBottom>
         Image Gallery
       </Typography>

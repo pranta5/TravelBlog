@@ -88,7 +88,7 @@ const Blog = () => {
     const query = e.target.value;
     setSearchQuery(query);
 
-    if(query === ""){
+    if (query === "") {
       fetchPosts(1);
     }
   };
@@ -124,37 +124,37 @@ const Blog = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4, minHeight: "80vh" }}>
+      <Typography variant="h6" color="warning" mb={2}>* It's possible that images are not displaying due to changes in Appwrite's policies regarding free user access for Image transformations (starting April 1st, 2025).</Typography>
       {/* Search and Sort Controls */}
       <Box sx={{ mb: 4 }}>
-      <Box
-  component="form"
-  onSubmit={handleSearchSubmit}
-  sx={{
-    display: "flex",
-    flexDirection: { xs: "column", sm: "row" },
-    alignItems: "center",
-    gap: 2,
-    mb: 2,
-  }}
->
-  <TextField
-    variant="outlined"
-    size="small"
-    placeholder="Search posts..."
-    value={searchQuery}
-    onChange={handleSearchChange}
-    sx={{ width: { xs: "100%", sm: "auto" }, maxWidth: 400 }}
-  />
-  <Button
-    type="submit"
-    variant="contained"
-    size="small"
-    sx={{ backgroundColor: "#36d17b", px: 3 }}
-  >
-    Search
-  </Button>
-</Box>
-
+        <Box
+          component="form"
+          onSubmit={handleSearchSubmit}
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            alignItems: "center",
+            gap: 2,
+            mb: 2,
+          }}
+        >
+          <TextField
+            variant="outlined"
+            size="small"
+            placeholder="Search posts..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            sx={{ width: { xs: "100%", sm: "auto" }, maxWidth: 400 }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            size="small"
+            sx={{ backgroundColor: "#36d17b", px: 3 }}
+          >
+            Search
+          </Button>
+        </Box>
 
         <FormControl component="fieldset">
           <FormLabel component="legend">Sort By</FormLabel>
@@ -202,6 +202,8 @@ const Blog = () => {
           {displayedPosts.map((post) => (
             <Grid item key={post.$id} xs={12} sm={6} md={4} lg={3}>
               <PostCard {...post} />
+              {/* {console.log("posts......",post)} */}
+              
             </Grid>
           ))}
         </Grid>

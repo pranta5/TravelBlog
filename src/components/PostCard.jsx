@@ -13,6 +13,9 @@ const truncateTitle = (titletext, maxLength) => {
 
 const PostCard = ({ $id, title, featuredImage, content }) => {
   // Truncate content to 100 characters, preserving HTML structure
+  // console.log("image...........",featuredImage);
+  console.log("image...........",service.getfilePreview(featuredImage));
+  
   const truncatedContent = content ? truncate(content, 100) : "";
 
   return (
