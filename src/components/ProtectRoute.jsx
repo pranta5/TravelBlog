@@ -13,10 +13,10 @@ const ProtectRoute = ({ children, authentication = true }) => {
     } else if (!authentication && authStatus !== authentication) {
       navigate("/");
     }
-    setloader(false)
-  }, [authentication,authStatus,navigate]);
+    setloader(false);
+  }, [authentication, authStatus, navigate]);
 
-  return loader ? <h2>Loading ......</h2> :<>{children}</>
+  return loader ? <h2>Loading ......</h2> : <>{children}</>;
 };
 
 export default ProtectRoute;

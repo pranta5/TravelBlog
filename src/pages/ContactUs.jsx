@@ -110,20 +110,20 @@ const ContactUs = () => {
                 sx={{
                   p: 3,
                   borderRadius: "12px",
-                  backgroundImage: `url(${officeimg})`, 
+                  backgroundImage: `url(${officeimg})`,
                   backgroundPosition: "center",
                   height: "300px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-                  color: "black", 
+                  color: "black",
                 }}
               >
                 <Typography
                   variant="h5"
                   gutterBottom
                   fontWeight="bold"
-                  color="inherit" 
+                  color="inherit"
                 >
                   Our Office
                 </Typography>
@@ -134,8 +134,8 @@ const ContactUs = () => {
                   justifyContent="center"
                   gap={1}
                 >
-                  <LocationOn sx={{ color: "black" }} /> 123 Main Street, Kolkata, WB
-                  700106
+                  <LocationOn sx={{ color: "black" }} /> 123 Main Street,
+                  Kolkata, WB 700106
                 </Typography>
                 <Typography
                   variant="body1"

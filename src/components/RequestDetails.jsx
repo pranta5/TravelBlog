@@ -229,7 +229,7 @@ const RequestDetails = () => {
   const getAllRequests = async () => {
     try {
       const data = await requestservice.getRequests();
-      setRequests(data|| []);
+      setRequests(data || []);
       setFilteredRequests(data.documents || []); // Ensure filteredRequests updates
     } catch (error) {
       console.error("Error fetching requests:", error);
@@ -243,7 +243,7 @@ const RequestDetails = () => {
   useEffect(() => {
     getAllRequests();
   }, []);
-console.log("requests",requests);
+  console.log("requests", requests);
 
   useEffect(() => {
     if (!Array.isArray(requests) || loading) return; // ✅ Avoid filtering before data loads
@@ -282,7 +282,12 @@ console.log("requests",requests);
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
         <CircularProgress color="primary" />
       </Box>
     );
@@ -335,7 +340,10 @@ console.log("requests",requests);
                   <Select
                     value={request.status || "Pending"}
                     onChange={(e) =>
-                      requestservice.updateRequestStatus(request.$id, e.target.value)
+                      requestservice.updateRequestStatus(
+                        request.$id,
+                        e.target.value
+                      )
                     }
                     size="small"
                   >

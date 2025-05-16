@@ -3,7 +3,7 @@ import React from "react";
 import logoImageT from "../../assets/Logo/logo-transparent.png";
 import { Link } from "react-router-dom";
 
-const Logo = ({color}) => {
+const Logo = ({ color }) => {
   return (
     <Link to="/" style={{ textDecoration: "none" }}>
       <Box

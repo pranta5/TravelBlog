@@ -12,10 +12,15 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Profile, MyPost, EnquiryDetails } from "../../components/CompIndex";
-import { Menu as MenuIcon, AccountCircle, Article, QuestionAnswer } from "@mui/icons-material";
+import {
+  Menu as MenuIcon,
+  AccountCircle,
+  Article,
+  QuestionAnswer,
+} from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import RequestDetails from "../../components/RequestDetails";
-import AttractionsIcon from '@mui/icons-material/Attractions';
+import AttractionsIcon from "@mui/icons-material/Attractions";
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
@@ -26,17 +31,20 @@ const Dashboard = () => {
   const isAdmin = userData?.userData?.labels?.includes("admin") || false;
 
   console.log("data on profile", userData?.userData);
-  
 
   const menuItems = [
     { label: "Profile", key: "profile", icon: <AccountCircle /> },
     { label: "My Posts", key: "mypost", icon: <Article /> },
-    ...(isAdmin ? [{ label: "Enquiry", key: "enquiry", icon: <QuestionAnswer /> }] : []),
-    ...(isAdmin ? [{ label: "Request", key: "request", icon: < AttractionsIcon/> }] : []),
+    ...(isAdmin
+      ? [{ label: "Enquiry", key: "enquiry", icon: <QuestionAnswer /> }]
+      : []),
+    ...(isAdmin
+      ? [{ label: "Request", key: "request", icon: <AttractionsIcon /> }]
+      : []),
   ];
 
   return (
-    <Box display="flex" minHeight="100vh"> 
+    <Box display="flex" minHeight="100vh">
       {/* Sidebar - Responsive */}
       <Paper
         sx={{
@@ -47,7 +55,10 @@ const Dashboard = () => {
           transition: "width 0.3s",
         }}
       >
-        <Typography variant="h6" sx={{ mb: 2, fontWeight: "bold", textAlign: "center" }}>
+        <Typography
+          variant="h6"
+          sx={{ mb: 2, fontWeight: "bold", textAlign: "center" }}
+        >
           {isSmallScreen ? <MenuIcon /> : "Dashboard"}
         </Typography>
 
@@ -63,7 +74,7 @@ const Dashboard = () => {
                 }}
                 onClick={() => setActiveTab(item.key)}
               >
-                <IconButton sx={{ color: "white"}}>{item.icon}</IconButton>
+                <IconButton sx={{ color: "white" }}>{item.icon}</IconButton>
                 {!isSmallScreen && <ListItemText primary={item.label} />}
               </ListItemButton>
             </ListItem>

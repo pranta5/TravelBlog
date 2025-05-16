@@ -40,9 +40,9 @@ export class Service {
     try {
       const updateData = { title, content, status };
 
-        if (featuredImage) {
-            updateData.featuredImage = featuredImage;
-        }
+      if (featuredImage) {
+        updateData.featuredImage = featuredImage;
+      }
       return await this.databases.updateDocument(
         configEnv.appwriteDatabseId,
         configEnv.appwriteCollectionId,
@@ -114,7 +114,6 @@ export class Service {
   async deleteFile(fileId) {
     if (!fileId) {
       throw new Error("Missing fileId in deleteFile function");
-
     }
     try {
       await this.storage.deleteFile(configEnv.appwriteBucketId, fileId);
@@ -129,7 +128,7 @@ export class Service {
       console.error("Missing fileId in getfilePreview function");
       return "";
     }
-    return this.storage.getFilePreview(configEnv.appwriteBucketId, fileId);
+    return this.storage.getFileView(configEnv.appwriteBucketId, fileId);
   }
 
   async createProfile({ userId, name }) {
@@ -165,25 +164,23 @@ export class Service {
 
   async getAllImages(page = 1, limit = 6) {
     try {
-      const response = await this.storage.listFiles(configEnv.appwriteBucketId, [
-        Query.limit(limit),
-        Query.offset((page - 1) * limit),
-      ]);
-  
+      const response = await this.storage.listFiles(
+        configEnv.appwriteBucketId,
+        [Query.limit(limit), Query.offset((page - 1) * limit)]
+      );
+
       const images = response.files.map((file) => ({
         id: file.$id,
         name: file.name,
         preview: this.getfilePreview(file.$id),
       }));
-  
+
       return images;
     } catch (error) {
       console.error("Error in fetching images", error);
       return [];
     }
   }
-  
-
 }
 const service = new Service();
 export default service;

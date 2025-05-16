@@ -1,14 +1,13 @@
-import React from 'react'
-import { Box } from '@mui/material'
-import {LoginComp} from '../components/CompIndex'
+import React from "react";
+import { Box } from "@mui/material";
+import { LoginComp } from "../components/CompIndex";
 
 const Login = () => {
   return (
     <Box py={4}>
-    <LoginComp/>
-
+      <LoginComp />
     </Box>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

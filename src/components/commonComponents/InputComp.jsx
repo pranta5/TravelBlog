@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import { forwardRef, useId } from "react";
 
 const InputComp = forwardRef(function InputComp(
-  { label, type = "text",name, sx, ...props },
+  { label, type = "text", name, sx, ...props },
   ref
 ) {
   const id = useId();

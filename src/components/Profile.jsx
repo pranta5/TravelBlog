@@ -9,34 +9,31 @@ const Profile = () => {
   const userData = Data?.userData;
 
   const [loading, setLoading] = useState(true);
-  const [requestValue,setRequestValue]=useState({})
+  const [requestValue, setRequestValue] = useState({});
 
   useEffect(() => {
     setProfile(userData);
   }, [userData]);
 
-  
-  useEffect(()=>{
-    const checkRequestStatus = async()=>{
-      if(!userData){
-        setLoading(false)
-        return
+  useEffect(() => {
+    const checkRequestStatus = async () => {
+      if (!userData) {
+        setLoading(false);
+        return;
       }
       try {
-        const request = await requestservice.getRequestByEmail(userData?.email)
-        setRequestValue(request)
-        
+        const request = await requestservice.getRequestByEmail(userData?.email);
+        setRequestValue(request);
       } catch (error) {
-        console.error("error in checking status")
-      }finally{
-        setLoading(false)
+        console.error("error in checking status");
+      } finally {
+        setLoading(false);
       }
-    }
-    checkRequestStatus()
-  },[userData])
+    };
+    checkRequestStatus();
+  }, [userData]);
 
-  console.log("requestValue",requestValue);
-
+  console.log("requestValue", requestValue);
 
   return (
     <Box
@@ -55,7 +52,6 @@ const Profile = () => {
           fontSize: { xs: "1.5rem", sm: "2rem", md: "2.2rem" }, // Responsive font size
           textAlign: { xs: "center", sm: "center" }, // Center on mobile
           fontFamily: "General Sans",
-          
         }}
       >
         My Profile
@@ -75,7 +71,7 @@ const Profile = () => {
               boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)", // Enhanced shadow
               borderColor: "#1e88e5", // Blue border on hover
             },
-            textAlign:"center"
+            textAlign: "center",
           }}
         >
           <Typography
@@ -109,10 +105,15 @@ const Profile = () => {
             Email: {profile.email}
           </Typography>
           <Typography>
-            Role : {profile.labels.length<1?"User":"Admin"}
+            Role : {profile.labels.length < 1 ? "User" : "Admin"}
           </Typography>
           <Typography>
-            Request Status : {loading?"Loading...": requestValue?.status?requestValue?.status:" Create Request"} 
+            Request Status :{" "}
+            {loading
+              ? "Loading..."
+              : requestValue?.status
+              ? requestValue?.status
+              : " Create Request"}
           </Typography>
         </Paper>
       ) : (

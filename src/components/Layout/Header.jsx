@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   AppBar,
@@ -55,14 +54,20 @@ const Header = () => {
               to={item.slug}
               onClick={onClick}
               sx={{
-                pl:4,
-                borderRadius:"999px",
-                backgroundColor: location.pathname === item.slug ? "#f1f5d1" : "inherit",
+                pl: 4,
+                borderRadius: "999px",
+                backgroundColor:
+                  location.pathname === item.slug ? "#f1f5d1" : "inherit",
                 color: location.pathname === item.slug ? "#000" : "#fff",
                 transform: "scale(.8)",
                 transformOrigin: "left center",
                 transition: "transform 0.3s ease",
-                "&:hover": {transform: "scale(.88)",borderRadius: "999px", backgroundColor: "#818752",color:"#ffffff" },
+                "&:hover": {
+                  transform: "scale(.88)",
+                  borderRadius: "999px",
+                  backgroundColor: "#818752",
+                  color: "#ffffff",
+                },
               }}
             >
               <ListItemText primary={item.name} />
@@ -72,7 +77,10 @@ const Header = () => {
     );
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#5b5e45", width: "100%" }}>
+    <AppBar
+      position="static"
+      sx={{ backgroundColor: "#5b5e45", width: "100%" }}
+    >
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box sx={{ display: "flex", alignItems: "center", flexGrow: 1 }}>
           {isMobile && (
@@ -97,11 +105,18 @@ const Header = () => {
                   to={item.slug}
                   sx={{
                     color: location.pathname === item.slug ? "#f1f5d1" : "#fff",
-                    backgroundColor: location.pathname === item.slug ? "#ffffff20" : "transparent",
+                    backgroundColor:
+                      location.pathname === item.slug
+                        ? "#ffffff20"
+                        : "transparent",
                     transform: "scale(1)",
                     transformOrigin: "left center",
                     transition: "transform 0.3s ease",
-                    "&:hover": {transform:"scale(1.1)",backgroundColor: "#818752", color: "#ffffff" },
+                    "&:hover": {
+                      transform: "scale(1.1)",
+                      backgroundColor: "#818752",
+                      color: "#ffffff",
+                    },
                   }}
                 >
                   {item.name}

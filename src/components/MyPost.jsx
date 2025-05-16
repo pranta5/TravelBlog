@@ -39,7 +39,9 @@ const MyPost = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const Response = await service.getPosts([Query.equal("userId", userId)]);
+        const Response = await service.getPosts([
+          Query.equal("userId", userId),
+        ]);
         setTotalPosts(Response.total);
 
         const response = await service.getPosts([
@@ -47,9 +49,8 @@ const MyPost = () => {
           Query.limit(postsPerPage),
           Query.offset((page - 1) * postsPerPage),
         ]);
-        console.log("response in my post ",response.documents)
+        console.log("response in my post ", response.documents);
         setPosts(response.documents);
-
       } catch (error) {
         console.error("Error fetching posts:", error);
       } finally {
@@ -64,7 +65,13 @@ const MyPost = () => {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "80vh" }}>
-      <Typography textAlign="center" fontFamily="General Sans" fontSize="26px" fontWeight="300" mb={3}>
+      <Typography
+        textAlign="center"
+        fontFamily="General Sans"
+        fontSize="26px"
+        fontWeight="300"
+        mb={3}
+      >
         My Posts
       </Typography>
 
@@ -73,9 +80,15 @@ const MyPost = () => {
           <CircularProgress />
         </Box>
       ) : posts.length > 0 ? (
-        <Box sx={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box
+          sx={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 2 }}
+        >
           {posts.map((post) => (
-            <Link to={`/post/${post.$id}`} style={{ textDecoration: "none" }} key={post.$id}>
+            <Link
+              to={`/post/${post.$id}`}
+              style={{ textDecoration: "none" }}
+              key={post.$id}
+            >
               <Card
                 sx={{
                   display: "flex",
@@ -94,19 +107,23 @@ const MyPost = () => {
                     width: isSmallScreen ? "100%" : 150,
                     height: isSmallScreen ? 150 : "100%",
                     objectFit: "cover",
-                    p:2,
-                    borderRadius:"20px"
+                    p: 2,
+                    borderRadius: "20px",
                   }}
                 />
 
                 <CardActionArea sx={{ flex: 1 }}>
                   <CardContent>
-                    <Typography color={post.status==="inactive"?"red":"green"}>{post.status.toUpperCase()}</Typography>
+                    <Typography
+                      color={post.status === "inactive" ? "red" : "green"}
+                    >
+                      {post.status.toUpperCase()}
+                    </Typography>
                     <Typography variant="h6" fontWeight="bold">
                       {post.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      {parse(truncateText(post.content,100))}
+                      {parse(truncateText(post.content, 100))}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -122,7 +139,7 @@ const MyPost = () => {
 
       {/* Pagination - Fixed at Bottom */}
       {totalPages > 1 && (
-        <Box sx={{ display: "flex", justifyContent: "center", mt:5 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
           <Pagination
             count={totalPages}
             page={page}

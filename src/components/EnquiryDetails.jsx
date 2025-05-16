@@ -46,7 +46,9 @@ const EnquiryDetails = () => {
       setEnquiries((prev) => ({
         ...prev,
         documents: prev.documents.map((enquiry) =>
-          enquiry.$id === enquiryId ? { ...enquiry, status: newStatus } : enquiry
+          enquiry.$id === enquiryId
+            ? { ...enquiry, status: newStatus }
+            : enquiry
         ),
       }));
     } catch (error) {
@@ -270,7 +272,8 @@ const EnquiryDetails = () => {
                       fontSize: { xs: "0.7rem", sm: "0.875rem" },
                       backgroundColor:
                         enquiry.status === "Solved" ? "#e6ffe6" : "#fff3e0",
-                      color: enquiry.status === "Solved" ? "#2e7d32" : "#ef6c00",
+                      color:
+                        enquiry.status === "Solved" ? "#2e7d32" : "#ef6c00",
                       "& .MuiOutlinedInput-notchedOutline": {
                         borderColor:
                           enquiry.status === "Solved" ? "#4caf50" : "#fb8c00",
@@ -281,10 +284,22 @@ const EnquiryDetails = () => {
                       },
                     }}
                   >
-                    <MenuItem value="Not Yet" sx={{ fontSize: { xs: "0.7rem", sm: "0.875rem" }, color: "#ef6c00" }}>
+                    <MenuItem
+                      value="Not Yet"
+                      sx={{
+                        fontSize: { xs: "0.7rem", sm: "0.875rem" },
+                        color: "#ef6c00",
+                      }}
+                    >
                       Not Yet
                     </MenuItem>
-                    <MenuItem value="Solved" sx={{ fontSize: { xs: "0.7rem", sm: "0.875rem" }, color: "#2e7d32" }}>
+                    <MenuItem
+                      value="Solved"
+                      sx={{
+                        fontSize: { xs: "0.7rem", sm: "0.875rem" },
+                        color: "#2e7d32",
+                      }}
+                    >
                       Solved
                     </MenuItem>
                   </Select>
@@ -312,10 +327,11 @@ const EnquiryDetails = () => {
             justifyContent: "center",
             py: { xs: 1, sm: 2 },
           },
-          "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows": {
-            fontSize: { xs: "0.7rem", sm: "0.875rem" },
-            color: "#1976d2",
-          },
+          "& .MuiTablePagination-selectLabel, & .MuiTablePagination-displayedRows":
+            {
+              fontSize: { xs: "0.7rem", sm: "0.875rem" },
+              color: "#1976d2",
+            },
           "& .MuiTablePagination-actions": {
             "& .MuiIconButton-root": {
               color: "#1976d2",

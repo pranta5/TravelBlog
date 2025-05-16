@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardComp = ({ image, text,link }) => {
+const CardComp = ({ image, text, link }) => {
   return (
     <Link to={link} style={{ textDecoration: "none" }}>
       <Card

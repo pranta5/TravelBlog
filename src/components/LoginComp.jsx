@@ -28,9 +28,6 @@ const LoginComp = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
 
-
-
-
   async function handleLogin(data) {
     setLoading(true);
     try {
@@ -38,19 +35,18 @@ const LoginComp = () => {
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) {
-          dispatch(storeLogin(userData))
+          dispatch(storeLogin(userData));
           setLoading(false);
         }
       }
-      alert("login Successfull")
+      alert("login Successfull");
       setTimeout(() => {
         navigate("/");
       }, 100);
       // window.location.reload()
     } catch (error) {
       setLoading(false);
-      console.log("error in login",error);
-      
+      console.log("error in login", error);
     }
   }
 
@@ -73,7 +69,14 @@ const LoginComp = () => {
           textAlign: "center",
         }}
       >
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mb: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
           <Logo width="100" color={"black"} />
         </Box>
         <Typography variant="h4" component="h1" sx={{ fontWeight: "bold" }}>
@@ -93,7 +96,11 @@ const LoginComp = () => {
           </Link>
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit(handleLogin)} sx={{ mt: 4 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit(handleLogin)}
+          sx={{ mt: 4 }}
+        >
           <Stack spacing={3}>
             <InputComp
               label="Email"
@@ -117,7 +124,13 @@ const LoginComp = () => {
               error={!!errors.password}
               helperText={errors.password?.message}
             />
-            <Button type="submit" fullWidth disabled={loading} variant="outlined" sx={{"&:hover":{backgroundColor:"grey.200"}}}>
+            <Button
+              type="submit"
+              fullWidth
+              disabled={loading}
+              variant="outlined"
+              sx={{ "&:hover": { backgroundColor: "grey.200" } }}
+            >
               {loading ? "Signing in..." : "Sign in"}
             </Button>
           </Stack>

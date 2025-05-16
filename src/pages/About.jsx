@@ -1,10 +1,9 @@
 import React from "react";
-import { Box, Typography, Container,Grid } from "@mui/material";
+import { Box, Typography, Container, Grid } from "@mui/material";
 import { motion } from "motion/react";
-import about2 from '../assets/Image/about2.jpg'
-import about3 from '../assets/Image/about3.jpg'
-import about1 from '../assets/Image/about.jpg'
-
+import about2 from "../assets/Image/about2.jpg";
+import about3 from "../assets/Image/about3.jpg";
+import about1 from "../assets/Image/about.jpg";
 
 const About = () => {
   return (
@@ -25,7 +24,7 @@ const About = () => {
             alignItems: "center",
             justifyContent: "center",
             color: "#f8b89e",
-            textAlign:"center",
+            textAlign: "center",
             p: 3,
             borderRadius: "8px",
           }}
@@ -56,7 +55,9 @@ const About = () => {
                 About Our Company
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                We are dedicated to providing the best experience with cutting-edge technology and user-friendly design. Our mission is to innovate and excel in the tech industry.
+                We are dedicated to providing the best experience with
+                cutting-edge technology and user-friendly design. Our mission is
+                to innovate and excel in the tech industry.
               </Typography>
             </Grid>
           </Grid>
@@ -69,14 +70,16 @@ const About = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Box sx={{ p: 4}}>
+        <Box sx={{ p: 4 }}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
               <Typography variant="h4" gutterBottom>
                 Our Mission
               </Typography>
               <Typography variant="body1" color="text.secondary">
-                Our mission is to empower individuals and businesses by delivering high-quality, reliable, and innovative solutions that drive success and growth.
+                Our mission is to empower individuals and businesses by
+                delivering high-quality, reliable, and innovative solutions that
+                drive success and growth.
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>

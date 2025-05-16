@@ -1,14 +1,13 @@
-import React from 'react'
-import {PostForm} from '../components/CompIndex'
-import { Box } from '@mui/material'
+import React from "react";
+import { PostForm } from "../components/CompIndex";
+import { Box } from "@mui/material";
 
 const AddPost = () => {
   return (
     <Box py={4}>
-        <PostForm/>
+      <PostForm />
     </Box>
-    
-  )
-}
+  );
+};
 
-export default AddPost
+export default AddPost;

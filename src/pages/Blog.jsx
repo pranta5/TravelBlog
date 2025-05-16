@@ -124,7 +124,11 @@ const Blog = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4, minHeight: "80vh" }}>
-      <Typography variant="h6" color="warning" mb={2}>* It's possible that images are not displaying due to changes in Appwrite's policies regarding free user access for Image transformations (starting April 1st, 2025).</Typography>
+      {/* <Typography variant="h6" color="warning" mb={2}>
+        * It's possible that images are not displaying due to changes in
+        Appwrite's policies regarding free user access for Image transformations
+        (starting April 1st, 2025).
+      </Typography> */}
       {/* Search and Sort Controls */}
       <Box sx={{ mb: 4 }}>
         <Box
@@ -203,7 +207,6 @@ const Blog = () => {
             <Grid item key={post.$id} xs={12} sm={6} md={4} lg={3}>
               <PostCard {...post} />
               {/* {console.log("posts......",post)} */}
-              
             </Grid>
           ))}
         </Grid>

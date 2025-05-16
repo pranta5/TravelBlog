@@ -55,38 +55,40 @@ const PostForm = ({ post }) => {
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
 
-  useEffect(()=>{
-    const checkRequestStatus = async()=>{
-      if(!userData){
-        setLoading(false)
-        return
+  useEffect(() => {
+    const checkRequestStatus = async () => {
+      if (!userData) {
+        setLoading(false);
+        return;
       }
       try {
-        const request = await requestservice.getRequestByEmailAndStatus(userData?.userData.email)
-        setIsAccepted(!!request)
+        const request = await requestservice.getRequestByEmailAndStatus(
+          userData?.userData.email
+        );
+        setIsAccepted(!!request);
       } catch (error) {
-        console.error("error in checking status")
-      }finally{
-        setLoading(false)
+        console.error("error in checking status");
+      } finally {
+        setLoading(false);
       }
-    }
-    checkRequestStatus()
-  },[userData])
+    };
+    checkRequestStatus();
+  }, [userData]);
 
   const submit = async (data) => {
     try {
       data.slug = slugTransform(data.title);
       let file = null;
       let dbPost = null;
-  
+
       if (post) {
         // Update Post First (Without Image Upload)
         dbPost = await service.updatePost(post.$id, data);
-  
+
         if (dbPost && data?.image?.[0]) {
           // Upload new image after successful update
           file = await service.uploadFile(data.image[0]);
-  
+
           // Delete old image only if the new one is uploaded
           if (file) {
             await service.deleteFile(post.featuredImage);
@@ -99,18 +101,18 @@ const PostForm = ({ post }) => {
           ...data,
           userId: userData?.userData.$id,
         });
-  
+
         if (dbPost && data?.image?.[0]) {
           // Upload image after post creation success
           file = await service.uploadFile(data.image[0]);
-  
+
           // If image upload succeeds, update the post with the image ID
           if (file) {
             await service.updatePost(dbPost.$id, { featuredImage: file.$id });
           }
         }
       }
-  
+
       if (dbPost) {
         alert(" Blog post submitted successfully.");
         navigate(`/post/${dbPost.$id}`);
@@ -121,7 +123,6 @@ const PostForm = ({ post }) => {
       console.error("Error submitting post:", error);
     }
   };
-  
 
   return (
     <Box
@@ -181,13 +182,11 @@ const PostForm = ({ post }) => {
             <MenuItem value="inactive">Inactive</MenuItem>
           </Select>
         </FormControl>
-        {
-          !isAccepted && !loading &&(
-            <Typography color="error" sx={{ mb: 2, fontSize: "0.9rem" }}>
+        {!isAccepted && !loading && (
+          <Typography color="error" sx={{ mb: 2, fontSize: "0.9rem" }}>
             You need an approved request to submit a post.
           </Typography>
-          )
-        }
+        )}
         <Button
           type="submit"
           variant="contained"
@@ -195,7 +194,13 @@ const PostForm = ({ post }) => {
           fullWidth
           disabled={!isAccepted || loading}
         >
-          {loading?<CircularProgress size="30px"/>:post ? "Update" : "Submit"}
+          {loading ? (
+            <CircularProgress size="30px" />
+          ) : post ? (
+            "Update"
+          ) : (
+            "Submit"
+          )}
         </Button>
       </Box>
     </Box>

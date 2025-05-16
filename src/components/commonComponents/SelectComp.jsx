@@ -20,4 +20,4 @@ const SelectComp = forwardRef(function SelectComp(
   );
 });
 
-export default SelectComp
+export default SelectComp;

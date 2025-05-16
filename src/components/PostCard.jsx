@@ -1,5 +1,11 @@
 import React from "react";
-import { Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import service from "../appwrite/config";
 import parse from "html-react-parser";
@@ -15,11 +21,14 @@ const PostCard = ({ $id, title, featuredImage, content }) => {
   // Truncate content to 100 characters, preserving HTML structure
   // console.log("image...........",featuredImage);
   // console.log("image...........",service.getfilePreview(featuredImage));
-  
+
   const truncatedContent = content ? truncate(content, 100) : "";
 
   return (
-    <Link to={`/post/${$id}`} style={{ textDecoration: "none", display: "block" }}>
+    <Link
+      to={`/post/${$id}`}
+      style={{ textDecoration: "none", display: "block" }}
+    >
       <Card
         sx={{
           maxWidth: 460,
@@ -46,7 +55,14 @@ const PostCard = ({ $id, title, featuredImage, content }) => {
             objectFit: "cover",
           }}
         />
-        <CardContent sx={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+        <CardContent
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <Typography
             variant="h6"
             sx={{

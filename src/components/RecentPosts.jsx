@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Grid, CircularProgress, Typography } from '@mui/material';
-import service from '../appwrite/config';
-import PostCard from './PostCard';
-import { Query } from 'appwrite';
+import React, { useState, useEffect } from "react";
+import { Box, Grid, CircularProgress, Typography } from "@mui/material";
+import service from "../appwrite/config";
+import PostCard from "./PostCard";
+import { Query } from "appwrite";
 
 const RecentPosts = () => {
   const [posts, setPosts] = useState([]);
@@ -14,11 +14,11 @@ const RecentPosts = () => {
         const response = await service.getPosts([
           Query.equal("status", "active"),
           Query.limit(4),
-          Query.orderDesc('$createdAt'),
+          Query.orderDesc("$createdAt"),
         ]);
         setPosts(response.documents);
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error("Error fetching posts:", error);
       } finally {
         setLoading(false);
       }
@@ -29,9 +29,13 @@ const RecentPosts = () => {
 
   return (
     <Box sx={{ px: { xs: 2, sm: 4 }, py: 4 }}>
-
       {loading ? (
-        <Box display="flex" justifyContent="center" alignItems="center" minHeight="200px">
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="200px"
+        >
           <CircularProgress />
         </Box>
       ) : (

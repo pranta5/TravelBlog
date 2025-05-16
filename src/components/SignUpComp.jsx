@@ -1,5 +1,3 @@
-
-
 import {
   Alert,
   Box,
@@ -31,7 +29,7 @@ const SignUpComp = () => {
   const [loading, setLoading] = useState(false);
 
   const createHandler = async (data) => {
-    setLoading(true)
+    setLoading(true);
     setSubmitError("");
     console.log("form data ", data);
 
@@ -44,14 +42,14 @@ const SignUpComp = () => {
         // Create a profile document in the profiles collection
         await service.createProfile({
           userId: userData.$id, // Appwrite user ID
-          name: data.name,     // Name from the form (not userData.name, since it’s set via form)
+          name: data.name, // Name from the form (not userData.name, since it’s set via form)
         });
-        setLoading(false)
+        setLoading(false);
       }
-      alert("signup Completed")
-      navigate("/login"); 
+      alert("signup Completed");
+      navigate("/login");
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.error("Error in createHandler:", error);
       setSubmitError(error.message);
     }
@@ -71,7 +69,14 @@ const SignUpComp = () => {
         elevation={3}
         sx={{ padding: 4, width: "100%", borderRadius: 2, textAlign: "center" }}
       >
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", mb: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
           <Logo color={"black"} width="100%" />
         </Box>
         <Typography variant="h4" component="h1" sx={{ fontWeight: "bold" }}>
@@ -132,9 +137,14 @@ const SignUpComp = () => {
               error={!!errors.password}
               helperText={errors.password?.message}
             />
-            <Button type="submit" disabled={loading} fullWidth variant="outlined" sx={{"&:hover":{backgroundColor:"grey.200"}}}>
-              {loading? "Creating....": "Create Account"}
-              
+            <Button
+              type="submit"
+              disabled={loading}
+              fullWidth
+              variant="outlined"
+              sx={{ "&:hover": { backgroundColor: "grey.200" } }}
+            >
+              {loading ? "Creating...." : "Create Account"}
             </Button>
           </Stack>
         </Box>

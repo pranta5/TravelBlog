@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 
 const LogoutBtn = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const logoutHandler = () => {
     authService
       .logout()
       .then(() => {
         dispatch(logout());
-        alert("logout success")
-        navigate("/")
+        alert("logout success");
+        navigate("/");
       })
       .catch((err) => console.log("error while dispatch logout", err));
   };
@@ -22,17 +22,17 @@ const LogoutBtn = () => {
     <Button
       onClick={logoutHandler}
       sx={{
-        px:5,
+        px: 5,
         borderRadius: "999px",
-        color:"#f1f5d1",
-        bgcolor:"#821414",
+        color: "#f1f5d1",
+        bgcolor: "#821414",
         transform: "scale(.9)",
         transformOrigin: "left center",
         transition: "transform 0.3s ease",
         "&:hover": {
           backgroundColor: "#c11d1d",
-          color:"#ffffff",
-          transform: "scale(1)"
+          color: "#ffffff",
+          transform: "scale(1)",
         },
       }}
     >
